@@ -17,3 +17,27 @@ test("SingleItem should display each file and folder", () => {
   expect(singleItemElement).toBeInTheDocument();
   expect(singleItemElement).toHaveTextContent("Employee Handbook");
 });
+
+test("Folder should not contain an 'added' key", () => {
+  const item = {
+    type: "folder",
+    name: "Expenses",
+    files: [
+      {
+        type: "doc",
+        name: "Expenses claim form",
+        added: "2017-05-02",
+      },
+      {
+        type: "doc",
+        name: "Fuel allowances",
+        added: "2017-05-03",
+      },
+    ],
+  };
+  render(<SingleItem item={item} />);
+
+  const singleItemElement = screen.getByTestId("folder-1");
+  expect(singleItemElement).toBeInTheDocument();
+  expect(singleItemElement).toHaveTextContent("Expenses");
+});
