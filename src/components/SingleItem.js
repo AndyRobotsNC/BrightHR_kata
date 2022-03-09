@@ -14,8 +14,8 @@ const SingleItem = ({ item }) => {
     <>
       {item.type === "folder" ? (
         <>
-          <div onClick={handleClick} className="folder">
-            <h3 data-testid="folder-1">{item.name}</h3>
+          <div onClick={handleClick} data-testid="folder-1" className="folder">
+            <h3>{item.name}</h3>
             <h4>Type: {item.type}</h4>
           </div>
           {clicked &&

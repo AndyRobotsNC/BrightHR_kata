@@ -18,7 +18,7 @@ test("SingleItem should display each file and folder", () => {
   expect(singleItemElement).toHaveTextContent("Employee Handbook");
 });
 
-test("Folder should not contain an 'added' key", () => {
+test("Folder should have a class name of 'folder'", () => {
   const item = {
     type: "folder",
     name: "Expenses",
@@ -39,5 +39,5 @@ test("Folder should not contain an 'added' key", () => {
 
   const singleItemElement = screen.getByTestId("folder-1");
   expect(singleItemElement).toBeInTheDocument();
-  expect(singleItemElement).toHaveTextContent("Expenses");
+  expect(singleItemElement.classList).toContain("folder");
 });
