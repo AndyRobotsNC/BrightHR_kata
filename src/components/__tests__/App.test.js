@@ -15,5 +15,5 @@ test("SingleItem should display each file and folder", () => {
 
   const singleItemElement = screen.getByTestId("item-1");
   expect(singleItemElement).toBeInTheDocument();
-  expect(singleItemElement).toHaveTextContent("Name: Employee Handbook");
+  expect(singleItemElement).toHaveTextContent("Employee Handbook");
 });

@@ -3,7 +3,7 @@ import SingleItem from "./SingleItem";
 
 const AllFilesAndFolders = () => {
   return (
-    <div>
+    <div className="container">
       {jsonData.map((item) => {
         return <SingleItem item={item} />;
       })}
