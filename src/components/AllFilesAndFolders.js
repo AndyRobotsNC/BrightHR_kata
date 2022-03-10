@@ -4,6 +4,7 @@ import SingleItem from "./SingleItem";
 const AllFilesAndFolders = ({ sortBy }) => {
   let nameSortedArr = [];
   let sizeSortedArr = [];
+  let dateSortedArr = [];
 
   switch (sortBy) {
     case "name":
@@ -22,10 +23,37 @@ const AllFilesAndFolders = ({ sortBy }) => {
       sizeSortedArr = foldersArr.concat(singleFileArr);
       break;
     case "date":
+      let dateArr = jsonData.map((file) => {
+        if (file.type !== "folder") {
+          file.added = new Date(file.added);
+        } else {
+          file.files.forEach((item) => {
+            item.added = new Date(item.added);
+          });
+        }
+        return file;
+      });
+      const singleDateFileArr = dateArr.filter((file) => {
+        return !("files" in file);
+      });
+      const dateFoldersArr = dateArr.filter((file) => {
+        return "files" in file;
+      });
+      singleDateFileArr.sort((a, b) => b.added - a.added);
+      dateSortedArr = singleDateFileArr.concat(dateFoldersArr);
+      dateSortedArr.forEach((file) => {
+        if (file.type !== "folder") {
+          file.added = file.added.toString().slice(3, 15);
+        } else {
+          file.files.forEach((item) => {
+            item.added = item.added.toString().slice(3, 15);
+          });
+        }
+      });
       break;
     default:
   }
-  console.log(jsonData);
+
   return (
     <div className="container">
       {sortBy === "name"
@@ -37,7 +65,7 @@ const AllFilesAndFolders = ({ sortBy }) => {
             return <SingleItem item={item} />;
           })
         : sortBy === "date"
-        ? jsonData.map((item) => {
+        ? dateSortedArr.map((item) => {
             return <SingleItem item={item} />;
           })
         : jsonData.map((item) => {
