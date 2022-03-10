@@ -1,7 +1,8 @@
 import jsonData from "./data/files.json";
 import SingleItem from "./SingleItem";
+import FailedSearch from "./FailedSearch";
 
-const AllFilesAndFolders = ({ sortBy }) => {
+const AllFilesAndFolders = ({ sortBy, searchResult, setSearchResult }) => {
   //creating the name sorted array
   let nameSortedArr = [...jsonData].sort((a, b) =>
     a.name.localeCompare(b.name)
@@ -60,7 +61,13 @@ const AllFilesAndFolders = ({ sortBy }) => {
             return <SingleItem item={item} />;
           })
         : jsonData.map((item) => {
-            return <SingleItem item={item} />;
+            if (searchResult === "") {
+              return <SingleItem item={item} />;
+            } else if (item.name === searchResult) {
+              return <SingleItem item={item} />;
+            } else {
+              return <FailedSearch />;
+            }
           })}
     </div>
   );
