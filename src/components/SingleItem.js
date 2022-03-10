@@ -6,10 +6,11 @@ const SingleItem = ({ item }) => {
 
   useEffect(() => {}, [clicked]);
 
+  // gives ability to toggle the folder open and closed
   const handleClick = () => {
     setClicked((currState) => !currState);
   };
-
+  // if the item is a folder then render folder with the ability to toggle clicking it open and closed
   return (
     <div data-testid="rendered-item">
       {item.type === "folder" ? (

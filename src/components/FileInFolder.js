@@ -1,4 +1,5 @@
 const FileInFolder = ({ file }) => {
+  //displays file in the folder information
   return (
     <div className="single-folder-item" data-testid="rendered-folder-item">
       <h3>{file.name}</h3>

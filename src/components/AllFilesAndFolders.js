@@ -45,6 +45,7 @@ const AllFilesAndFolders = ({ sortBy, searchResult }) => {
     }
   });
 
+  //maps over array depending on 'sort by' selection
   return (
     <div className="container">
       {sortBy === "name"
