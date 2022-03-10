@@ -5,7 +5,7 @@ const SortBy = ({ setSortBy }) => {
 
   return (
     <div>
-      <label for="sort-by">Sort By: </label>
+      <label htmlFor="sort-by">Sort By: </label>
       <select name="sort-by" id="sort-by" onChange={handleChange}>
         <option vaule="default">default</option>
         <option value="name">name</option>

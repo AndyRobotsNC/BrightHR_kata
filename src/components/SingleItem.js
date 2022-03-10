@@ -11,7 +11,7 @@ const SingleItem = ({ item }) => {
   };
 
   return (
-    <>
+    <div data-testid="rendered-item">
       {item.type === "folder" ? (
         <>
           <div onClick={handleClick} data-testid="folder-1" className="folder">
@@ -30,7 +30,7 @@ const SingleItem = ({ item }) => {
           <h4>Added: {item.added}</h4>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -4,7 +4,6 @@ const Search = ({ setSearchResult }) => {
   const [searchBox, setSearchBox] = useState("");
 
   const handleSubmit = (event) => {
-    console.log(searchBox);
     setSearchResult(searchBox);
     setSearchBox("");
     event.preventDefault();
@@ -18,8 +17,9 @@ const Search = ({ setSearchResult }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>file search: </label>
+        <label htmlFor="file-search">file search: </label>
         <input
+          id="file-search"
           className="searchBox"
           type="text"
           onChange={handleChange}
